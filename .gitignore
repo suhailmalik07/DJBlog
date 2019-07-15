@@ -1,0 +1,6 @@
+.env/Lib/site-packages/autopep8.py
+/.env/
+/blog/__pycache__
+/django_project/__pycache__
+/users/__pycache__
+/.vscode
