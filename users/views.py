@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
-
-# Create your views here.
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 
 class RegisterView(View):
@@ -38,7 +36,8 @@ class ProfileView(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        p_form = ProfileUpdateForm(
+            request.POST, request.FILES, instance=request.user.profile)
         context = {
             'u_form': u_form,
             'p_form': p_form,

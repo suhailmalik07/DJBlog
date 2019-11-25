@@ -6,7 +6,6 @@ from .models import Post
 from django.contrib.auth.models import User
 
 
-# Create your views here.
 class HomeView(ListView):
     model = Post
     template_name = 'blog/index.html'
@@ -23,8 +22,9 @@ class UserPostListView(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        user = get_object_or_404(User, username = self.kwargs.get('username'))
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 class PostDetailView(DetailView):
     model = Post
@@ -40,20 +40,22 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
 
     def form_valid(self, form):
-        form.instance.author  = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
 
     def form_valid(self, form):
-        form.instance.author  = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
     def test_func(self):
@@ -62,7 +64,9 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
+
 class AboutView(View):
     template_name = 'blog/about.html'
+
     def get(self, requeset):
         return render(requeset, self.template_name, {'title': 'About'})
