@@ -1,21 +1,31 @@
 # Django_blog
+Awesome blog 
+
+This is a blog app. User can create his account and share his thaughts to other users.
+
+# Requirements
+
+* python > 3.5
 
 
-How to run?
-first clone it to your computer
-make sure you have python installed
-
-Create a virtual environment in django_blog folder
-(open terminal in django_blog folder run "python -m venv .env")
-
-Now activate Virtual environment
-(run this command in terminal ".env/Scripts/activate") 
+Create virtual environment in django_blog folder and activate it. (optional)
+```
+python -m venv .env
+.env/Scripts/activate
+``` 
 
 Install required packages
-("pip install -r requirments.txt")
+```
+pip install -r requirments.txt
+```
 
-First migrate
-("python manage.py migrate")
+Now make required migrations & migrate
+```
+python manage.py makemigrations
+python manage.py migrate
+```
 
 Now simply run
-("python manage.py runserver)
+```
+python manage.py runserver
+```
