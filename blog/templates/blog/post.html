@@ -1,0 +1,24 @@
+<article class="media content-section">
+    <img src="{{ post.author.profile.image.url }}" class="rounded-circle article-img" alt="Author Image">
+    <div class="media-body">
+        <div class="article-metadata row pb-1">
+            <div>
+                <a class="ml-2 font-weight-bold text-capitalize"
+                    href="#">{{ post.author }}</a>
+                <br>
+                <small class="ml-2"><a href="{% url 'post-detail' post.id %}" class="text-muted underline-on-hover">{{ post.date_posted|date:"F d, Y" }}</a></small>
+            </div>
+            {% if post.author == user %}
+            <div class="ml-auto p-2">
+                <a href="{% url 'post-update' post.id %}" class="mt-1 mb-1"><i
+                        class="small material-icons">create</i></a>
+                <a href="{% url 'post-delete' post.id %}" class="mt-1 mb-1 text-danger"><i
+                        class="small material-icons">delete</i></a>
+                <a href="#"><i class="small material-icons">more_horiz</i></a>
+            </div>
+            {% endif %}
+        </div>
+        <h2 class="article-title">{{ post.title }}</h2>
+        <p class="article-content">{{ post.content }}</p>
+    </div>
+</article>

@@ -10,24 +10,23 @@ class HomeView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted']
     paginate_by = 5
 
 
 class UserPostListView(ListView):
     model = Post
-    template_name = 'blog/user_post.html'
+    template_name = 'blog/index.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted']
     paginate_by = 5
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Post.objects.filter(author=user).order_by('-date_posted')
+        return Post.objects.filter(author=user)
 
 
 class PostDetailView(DetailView):
     model = Post
+    context_object_name = 'post'
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
