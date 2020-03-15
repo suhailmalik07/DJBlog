@@ -16,6 +16,8 @@
 
     <!-- Materialize Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Title -->
     {% if title %}
     <title>Students Blog - {{ title }}</title>
     {% else %}
@@ -28,7 +30,7 @@
     <header>
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
             <div class="container">
-                <a href="{% url 'blog-home' %}" class="navbar-brand">Django Blog</a>
+                <a href="{% url 'blog-home' %}" class="navbar-brand">Students Blog</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
